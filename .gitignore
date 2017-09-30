@@ -22,7 +22,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-app_data/
+[Aa]pp_Data/
+[Mm]edia/
 [Aa]pp_Data/TEMP/ExamineIndexes/
 
 # Visual Studio 2015 cache/options directory
