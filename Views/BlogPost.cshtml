@@ -1,0 +1,105 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "Master.cshtml";
+}
+<main>
+    <div class="container">
+
+        <!--First row-->
+        <div class="row mb-2 mt-1">
+
+            <!--Carousel header-->
+            <div class="col-md-12">
+                @Html.Partial("BlogSlider")
+            </div>
+            <!--/Carousel header-->
+
+        </div>
+        <div class="row">
+
+            <!--Main listing-->
+            <div class="col-lg-8">
+
+                <!--Post data-->
+                <div class="blog-text text-center">
+
+                    <!-- Post data -->
+                    <a href="" class="amber-text"><h4><i class="fa fa-cutlery"></i> @CurrentPage.PageTitle</h4></a>
+                    <h1>@CurrentPage.PageSubtitle</h1>
+                    <h5>
+                        By<a href="" class="black-text"> Vinitha Raj </a> @String.Format("{0:dddd, MMMM d, yyyy}", CurrentPage.UpdateDate)<a>
+                            @*<span>
+                                    <i class="fa fa-comments-o"></i> 35
+                                </span>*@
+                        </a>
+                    </h5>
+
+                </div>
+                <!--/.Post data-->
+                <!--Section: Post-->
+                <section class="section">
+                    <!--First row-->
+                    <div class="row">
+                        @CurrentPage.GetGridHtml("content", "grid")
+                    </div>
+                    <!--/First row-->
+                </section>
+                <!--/.Section: Post-->
+
+            </div>
+            <!--/.Main listing-->
+            <!--Sidebar-->
+            <div class="col-lg-4">
+
+                <!--Author card-->
+                <section class="wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+
+                    <!--Card-->
+                    <div class="card author-card">
+                        <!--Background image-->
+                        <div class="card-up">
+                            <img src="@CurrentPage.Image" class="img-fluid">
+                        </div>
+                        @{
+                            var page = CurrentPage._profilePage[0];
+                            var profile = Umbraco.Content(page.Id);
+
+                            <!--Avatar-->
+                            <div class="avatar">
+                                <img src="@profile.Photo?quality=90" class="img-fluid img-author">
+                            </div>
+                            <div class="card-block">
+                                <!--Name-->
+                                <h4 class="card-title"><strong>@profile.FullName</strong></h4>
+                                <!--Description-->
+                                <p>@profile.Passion</p>
+
+                                @if (!String.IsNullOrEmpty(profile.faceBook))
+                                {
+                                <a class="icons-sm ins-ic" href="@profile.faceBook"><i class="fa fa-facebook"></i></a>
+                                }
+                                @if (!String.IsNullOrEmpty(profile.instagram))
+                                {
+                                <a class="icons-sm ins-ic" href="@profile.instagram"><i class="fa fa-instagram"></i></a>
+                                }
+                                @if (!String.IsNullOrEmpty(profile.twitter))
+                                {
+                                <a class="icons-sm ins-ic" href="@profile.twitter"><i class="fa fa-twitter"></i></a>
+                                }
+
+                            </div>
+
+
+                        }
+                    </div>
+                    <!--/Card-->
+
+                </section>
+                <!--/Author card-->
+            </div>
+            <!--/Sidebar-->
+        </div>
+        <!--/.Blog-->
+
+    </div>
+</main>
