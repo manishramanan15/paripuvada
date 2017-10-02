@@ -2,7 +2,7 @@
 
 @{
     var selection = Model.Content.Site().FirstChild("landingPage");
-    var categories = selection.Children("recipeCategory");
+    var categories = selection.Children("recipeCategory").Take(8);
 
     var contentIds = new List<int>();
 
