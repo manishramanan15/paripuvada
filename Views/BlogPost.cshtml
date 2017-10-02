@@ -58,7 +58,7 @@
                     <div class="card author-card">
                         <!--Background image-->
                         <div class="card-up">
-                            <img src="@CurrentPage.Image" class="img-fluid">
+                            <img src="@string.Format("{0}?quality=20",CurrentPage.Image)" class="img-fluid">
                         </div>
                         @{
                             var page = CurrentPage._profilePage[0];
