@@ -28,11 +28,12 @@
     if (CurrentPage.DocumentTypeAlias == "recipeCategory") {
         var pages = CurrentPage.Children.Where("Visible");
         foreach (var p in pages) {
-            var image = p.GetProperty("image");
-            if (!String.IsNullOrEmpty(image.Value.ToString()))
+            var image = p.GetPropertyValue("image");
+            if (image != null)
             {
                 contentIds.Add(p.Id);
             }
+
 
         }
     }
@@ -52,7 +53,7 @@
 
         <!--Featured image -->
         <div class="view overlay hm-white-light z-depth-1-half">
-            <img src="@page.image?quality=50&compression=99" class="img-fluid " alt="@page.pageTitle">
+            <img src="@page.image?quality=25&compression=99" class="img-fluid " alt="@page.pageTitle">
             <div class="mask">
             </div>
         </div>
