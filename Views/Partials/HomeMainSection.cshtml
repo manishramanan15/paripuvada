@@ -10,14 +10,18 @@
     //get the first latest
     foreach (var category in categories)
     {
-        var item = category.Children().OrderBy("UpdateDate desc").First();
-        var image = item.GetProperty("image");
+        var items = category.Children.Where(x=> x.GetPropertyValue<bool>("showOnHomePage")).OrderBy("UpdateDate desc");
 
-        if (!String.IsNullOrEmpty(image.Value.ToString()))
+        if (items == null) { continue; }
+
+        foreach (var item in items)
         {
-            contentIds.Add(item.Id);
+            var image = item.GetProperty("image");
+            if (!string.IsNullOrEmpty(image.Value.ToString()))
+            {
+                contentIds.Add(item.Id);
+            }
         }
-
 
     }
 
