@@ -1,9 +1,9 @@
 Sitemap: https://{HTTP_HOST}/sitemap/
 User-agent: *
+Allow: /ads.txt
 Disallow: /aspnet_client/
 Disallow: /bin/
 Disallow: /config/
-Disallow: /css/
 Disallow: /data/
 Disallow: /install/
 Disallow: /masterpages/
