@@ -14,25 +14,22 @@
     <title>@CurrentPage.Name | @CurrentPage._siteName</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-         (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-1633552283986455",
-              enable_page_level_ads: true
-         });
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-1633552283986455",
         enable_page_level_ads: true
       });
     </script>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 </head>
 
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MWL6Q8T"
-                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                height="0" width="0" style="display:none;visibility:hidden">
+        </iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <noscript id="deferred-styles">
@@ -57,9 +54,8 @@
 
     @RenderSection("Header", required: false)
 
-
     <!--Navbar-->
-    <nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+    <nav class="navbar navbar-toggleable-md navbar-dark scrolling-navbar">
         <div class="container">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -110,8 +106,6 @@
     </footer>
     <!--/.Footer-->
     <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="/js/jquery-2.2.3.min.js"></script>
 
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="/js/tether.min.js"></script>
@@ -121,10 +115,6 @@
 
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="/js/mdb.min.js"></script>
-
-    <script>
-        new WOW().init();
-    </script>
 
     @RenderSection("Footer", required: false)
 </body>
@@ -149,5 +139,9 @@
     }); var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
             'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MWL6Q8T');</script>
+    })(window, document, 'script', 'dataLayer', 'GTM-MWL6Q8T');
+ </script>
 <!-- End Google Tag Manager -->
+<script>
+ new WOW().init();
+</script>
