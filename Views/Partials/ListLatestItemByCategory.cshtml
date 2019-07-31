@@ -12,19 +12,25 @@
         //get the first latest
         foreach (var category in categories)
         {
-            var item = category.Children()
-                        .Where(x => x.IsVisible())
-                        .OrderBy("CreateDate desc")
-                        .First();
-
-            var image = item.GetProperty("image");
-
-            if (!String.IsNullOrEmpty(image.Value.ToString()))
+            if(category.Children.Count() > 0)
             {
-                contentIds.Add(item.Id);
+                var item = category.Children()
+                            .Where(x => x.IsVisible())
+                            .OrderBy("CreateDate desc")
+                            .First();
+    
+                if(item == null) { continue; }
+                
+                var image = item.GetProperty("image");
+    
+                if (!String.IsNullOrEmpty(image.Value.ToString()))
+                {
+                    contentIds.Add(item.Id);
+                }
             }
         }
     }
+    
     if (CurrentPage.DocumentTypeAlias == "recipeCategory") {
         var pages = CurrentPage.Children.Where("Visible");
         foreach (var p in pages) {

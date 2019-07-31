@@ -13,15 +13,15 @@
                     .Where(x => x.IsVisible())
                     .OrderBy("UpdateDate desc")
                     .FirstOrDefault();
-        var image = item.GetProperty("image");
-
-        if (!String.IsNullOrEmpty(image.Value.ToString())) {
-            contentIds.Add(item.Id);
-        }
-
+        if(item != null)
+        {
+            var image = item.GetProperty("image");
+    
+            if (!String.IsNullOrEmpty(image.Value.ToString())) {
+                contentIds.Add(item.Id);
+            }
+        }   
     }
-
-
 }
 
 <!--Carousel Wrapper-->
@@ -48,6 +48,7 @@
         @for (int i = 0; i < contentIds.Count; i++)
         {
             var page = Umbraco.Content(contentIds[i]);
+            if(page == null) {continue;}
             <div class="carousel-item @(i==0? "active" : null) view hm-black-light" style="background-image: url('@page.image?quality=45&compression=100'); background-repeat: no-repeat; background-size: cover;">
                 <!-- Caption -->
                 <div class="full-bg-img flex-center white-text">
