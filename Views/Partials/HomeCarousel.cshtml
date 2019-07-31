@@ -9,6 +9,7 @@
     //get the first latest
     foreach (var category in categories)
     {
+        if(category.Children.Count() == 0) {continue;}
         var item = category.Children()
                     .Where(x => x.IsVisible())
                     .OrderBy("UpdateDate desc")

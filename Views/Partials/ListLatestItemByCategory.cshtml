@@ -12,25 +12,24 @@
         //get the first latest
         foreach (var category in categories)
         {
-            if(category.Children.Count() > 0)
+            
+            if(category.Children.Count() == 0) {continue;}
+            
+            var item = category.Children()
+                        .Where(x => x.IsVisible())
+                        .OrderBy("CreateDate desc")
+                        .First();
+
+            if(item == null) { continue; }
+            
+            var image = item.GetProperty("image");
+
+            if (!String.IsNullOrEmpty(image.Value.ToString()))
             {
-                var item = category.Children()
-                            .Where(x => x.IsVisible())
-                            .OrderBy("CreateDate desc")
-                            .First();
-    
-                if(item == null) { continue; }
-                
-                var image = item.GetProperty("image");
-    
-                if (!String.IsNullOrEmpty(image.Value.ToString()))
-                {
-                    contentIds.Add(item.Id);
-                }
+                contentIds.Add(item.Id);
             }
         }
     }
-    
     if (CurrentPage.DocumentTypeAlias == "recipeCategory") {
         var pages = CurrentPage.Children.Where("Visible");
         foreach (var p in pages) {
@@ -78,33 +77,3 @@
 
     <hr>
 }
-@*
-    <!--Pagination-->
-    <nav>
-        <ul class="pagination flex-center pg-dark  wow fadeIn" data-wow-delay="0.2s">
-            <!--Arrow left-->
-            <li class="page-item">
-                <a class="page-link" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-
-            <!--Numbers-->
-            <li class="page-item active"><a class="page-link">1</a></li>
-            <li class="page-item"><a class="page-link">2</a></li>
-            <li class="page-item"><a class="page-link">3</a></li>
-            <li class="page-item"><a class="page-link">4</a></li>
-            <li class="page-item"><a class="page-link">5</a></li>
-
-            <!--Arrow right-->
-            <li class="page-item">
-                <a class="page-link" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!--/.Pagination-->
-*@

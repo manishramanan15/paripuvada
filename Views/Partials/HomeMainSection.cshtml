@@ -10,6 +10,8 @@
     //get the first latest
     foreach (var category in categories)
     {
+        if(category.Children.Count() == 0) {continue;}
+        
         var items = category.Children.Where(x=> x.GetPropertyValue<bool>("showOnHomePage")).OrderBy("UpdateDate desc");
 
         if (items == null) { continue; }
